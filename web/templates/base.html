@@ -8,15 +8,65 @@
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
   </head>
   <body>
-    {{- range .Images -}}
-    <img src="{{.Src}}" alt="image" />
-    {{- end -}}
+    <div class="container mx-auto">
+      <div class="my-4 flex flex-col">
+        <h1 class="text-gray-800">Wisik</h1>
+        <button
+          class="self-end rounded-md bg-green-500 px-4 py-2 text-white"
+          type="button"
+          onclick="addImageDialog.showModal()"
+        >
+          Add a photo
+        </button>
+      </div>
+      <div>
+        {{- range .Images -}}
+        <img src="{{.Src}}" alt="image" />
+        {{- end -}}
+      </div>
 
-    <form hx-post="/image">
-      <h1 class="text-red-800">submit</h1>
-      <input type="text" name="label" />
-      <input type="text" name="src" />
-      <button type="submit">Submit</button>
-    </form>
+      <dialog id="addImageDialog" class="w-[600px] rounded-md p-4">
+        <form hx-post="/image" class="flex flex-col gap-4">
+          <h2 class="text-lg font-medium text-gray-800">Add a new Photo</h2>
+          <label for="label" class="flex flex-col gap-2">
+            <span class="text-sm text-gray-600">Label:</span>
+            <input
+              type="text"
+              name="label"
+              id="label"
+              class="rounded-md border border-gray-600 p-2"
+              placeholder="A beautiful image"
+              required
+            />
+          </label>
+          <label for="src" class="flex flex-col">
+            <span class="text-sm text-gray-600">Photo URL:</span>
+            <input
+              type="url"
+              name="src"
+              id="src"
+              class="rounded-md border border-gray-600 p-2"
+              placeholder="https://placehold.co/600x400"
+              required
+            />
+          </label>
+          <div class="flex justify-end gap-4">
+            <button
+              type="button"
+              onclick="addImageDialog.close()"
+              class="text-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="rounded-md bg-green-500 px-4 py-2 text-white"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </div>
   </body>
 </html>
