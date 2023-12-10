@@ -4,8 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wisik</title>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
   </head>
   <body>
-    Wisik!
+    {{- range .Images -}}
+    <img src="{{.Src}}" alt="image" />
+    {{- end -}}
+
+    <form hx-post="/image">
+      <input type="text" name="label" />
+      <input type="text" name="src" />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
