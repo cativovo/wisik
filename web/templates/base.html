@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wisik</title>
+    <link rel="stylesheet" href="public/index.css" />
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
   </head>
   <body>
@@ -12,6 +13,7 @@
     {{- end -}}
 
     <form hx-post="/image">
+      <h1 class="text-red-800">submit</h1>
       <input type="text" name="label" />
       <input type="text" name="src" />
       <button type="submit">Submit</button>

@@ -1,0 +1,16 @@
+{
+  "name": "wisik",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "tailwind:dev": "tailwindcss -i ./web/css/index.css -o ./public/index.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.6"
+  }
+}
